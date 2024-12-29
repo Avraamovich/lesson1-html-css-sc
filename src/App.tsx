@@ -1,23 +1,27 @@
 import React from 'react';
 import './App.css';
 import styled from "styled-components";
+import {StyledBtn} from './components/Button.styled';
+import { LinkStyled } from './components/Link.styled';
+import { MenuStyled } from './components/Menu.styled';
 
 function App() {
     return (
         <div className="App">
 
-            <Menu>
+            <MenuStyled>
                 <ul>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
                 </ul>
-            </Menu>
+            </MenuStyled>
             <Box>
-                <StyledBtn as={Link} href="#">Link</StyledBtn>
-                <StyledBtn as="a" href="#">Link</StyledBtn>
-                <StyledBtn>Hello</StyledBtn>
-                <SuperBtn>Super Button</SuperBtn>
+                {/*<StyledBtn color={'green'} fontSize={"20px"}>Hello</StyledBtn>*/}
+                {/*<StyledBtn>Hello</StyledBtn>*/}
+
+                <StyledBtn btnType={"primary"}>Button - 1</StyledBtn>
+                <StyledBtn btnType={"outlined"}>Button - 2</StyledBtn>
             </Box>
         </div>
     );
@@ -25,31 +29,6 @@ function App() {
 
 export default App;
 
-const StyledBtn = styled.button`
-    border: none;
-    background-color: #ea6aa6;
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: #f6efef;
-    font-size: 2rem;
-    font-weight: bold;
-
-    &:hover {
-        background-color: #f14d76;
-    }
-`
-const Link = styled.a`
-    color: #4cadf8;
-    font-size: 2rem;
-    font-weight: bold;
-    background-color: transparent;
-`
-
-const SuperBtn = styled(StyledBtn)`
-    border-radius: 3px;
-    background-color: #fdf287;
-    color: #020000;
-`
 
 const Box = styled.div`
     height: 100vh;
@@ -62,14 +41,12 @@ const Box = styled.div`
         cursor: pointer;
     }
     
-    ${Link} {
+    ${LinkStyled} {
         cursor: zoom-in;
+    }
+    
+    @media  screen and (max-width: 760px) {
+      flex-direction: column;
     }
 `
 
-const Menu = styled.nav`
-    ul{
-        list-style: none;
-        padding: 0;
-    }
-`
